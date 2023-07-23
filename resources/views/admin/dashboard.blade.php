@@ -17,19 +17,17 @@
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
     </head>
     <body>
-        @include('layouts.inc.worker-navbar')
-
+        @include('layouts.inc.admin-navbar')
         <div id="layoutSidenav">
-            @include('layouts.inc.worker-sidebar')
+            @include('layouts.inc.admin-sidebar')
             <div id="layoutSidenav_content">
                 <main>
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">Admin Dashboard</h1>
                     @yield('content')
                 </main>
-                @include('layouts.inc.worker-footer')
+                @include('layouts.inc.admin-footer')
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('assets/js/scripts.js') }}"></script>
     </body>

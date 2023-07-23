@@ -10,3 +10,15 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 }
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    /**
+     * Show a list of all of the application's users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+}

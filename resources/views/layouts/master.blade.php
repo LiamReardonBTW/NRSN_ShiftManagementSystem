@@ -17,16 +17,15 @@
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
     </head>
     <body>
-        @include('layouts.inc.worker-navbar')
+        @include('layouts.inc.admin-navbar')
 
         <div id="layoutSidenav">
-            @include('layouts.inc.worker-sidebar')
+            @include('layouts.inc.admin-sidebar')
             <div id="layoutSidenav_content">
                 <main>
-                    <h1 class="mt-4">Dashboard</h1>
                     @yield('content')
                 </main>
-                @include('layouts.inc.worker-footer')
+                @include('layouts.inc.admin-footer')
             </div>
         </div>
 

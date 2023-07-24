@@ -21,6 +21,18 @@ Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
 
+Route::prefix('manager')->group(function(){
+    Route::get('/dashboard',[App\Http\Controllers\Manager\DashboardController::class, 'index']);
+});
+
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('logout');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,5 +40,25 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
+    })->name('dashboard');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin/dashboard');
+    })->name('dashboard');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/manager/dashboard', function () {
+        return view('manager/dashboard');
     })->name('dashboard');
 });

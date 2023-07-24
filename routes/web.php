@@ -17,12 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
 
-Route::prefix('manager')->group(function(){
+Route::prefix('manager')->middleware(['auth'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Manager\DashboardController::class, 'index']);
+});
+
+Route::prefix('worker')->middleware(['auth'])->group(function(){
+    Route::get('/dashboard',[App\Http\Controllers\Controller::class, 'index']);
 });
 
 Route::get('logout', function ()
@@ -43,22 +47,3 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin/dashboard');
-    })->name('dashboard');
-});
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/manager/dashboard', function () {
-        return view('manager/dashboard');
-    })->name('dashboard');
-});

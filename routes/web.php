@@ -17,16 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
+Route::prefix('dashboard')->group(function(){
+    Route::get('/dashboard',[App\Http\Controllers\HomeController::class, 'index']);
+});
+
+Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
 
-Route::prefix('manager')->middleware(['auth'])->group(function(){
+Route::prefix('manager')->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Manager\DashboardController::class, 'index']);
-});
-
-Route::prefix('worker')->middleware(['auth'])->group(function(){
-    Route::get('/dashboard',[App\Http\Controllers\Controller::class, 'index']);
 });
 
 Route::get('logout', function ()
@@ -46,16 +46,3 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

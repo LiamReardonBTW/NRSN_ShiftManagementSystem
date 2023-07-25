@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 
 class Authenticate extends Middleware
 {
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     */
-    /*
-     protected function redirectTo(Request $request): ?string
+    protected function redirectTo($request)
     {
-        return $request->expectsJson() ? null : route('login');
+        if (! $request->expectsJson()) {
+        session()->flash('status', 'You must log in to access this page.');
+            return route('login');
+        }
     }
-    */
 
     public function authenticated()
     {
@@ -25,7 +23,7 @@ class Authenticate extends Middleware
         }
         else if(Auth::user()->role_as == '2')
         {
-            return redirectTo('dashboard')->with('status','Log in successful.');
+            return redirectTo('manager/dashboard')->with('status','Log in successful.');
         }
         else if(Auth::user()->role_as == '3')
         {

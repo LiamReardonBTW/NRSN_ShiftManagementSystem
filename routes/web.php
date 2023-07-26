@@ -16,19 +16,19 @@ use Illuminate\Support\Facades\Route;
 //Landing/Home page route
 Route::redirect('/', 'login');
 
-//Default routes
-Route::prefix('')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth')->group(function(){
-    Route::get('/dashboard',[App\Http\Controllers\Worker\DashboardController::class, 'index']);
-});
-
 //Admin routes
 Route::prefix('admin')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isAdmin')->group(function(){
     Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
 
 //Manager routes
-Route::prefix('manager')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth')->group(function(){
+Route::prefix('manager')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isManager')->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Manager\DashboardController::class, 'index']);
+});
+
+//Worker routes
+Route::prefix('')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth')->group(function(){
+    Route::get('/dashboard',[App\Http\Controllers\Worker\DashboardController::class, 'index']);
 });
 
 //Logout route

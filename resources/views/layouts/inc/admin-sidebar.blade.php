@@ -64,7 +64,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Logged in as:</div>
-                Start Bootstrap
+                admin@nrsn.com {{-- Need to change to @yield user email --}}
             </div>
         </nav>
     </div>

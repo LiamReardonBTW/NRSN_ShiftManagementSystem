@@ -22,7 +22,11 @@ class AdminMiddleware
             {
                 return $next($request);
             }
-            else
+            else if(Auth::user()->role_as == '2')
+            {
+                return redirect('/manager/dashboard')->with('status', 'Access denied as you are not an admin.');
+            }
+            else if(Auth::user()->role_as == '3')
             {
                 return redirect('/dashboard')->with('status', 'Access rejected as you are not an admin.');
             }

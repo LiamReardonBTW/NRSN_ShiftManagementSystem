@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Landing/Home page route
+Route::redirect('/', 'login');
 
 //Default routes
 Route::prefix('')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth')->group(function(){
@@ -24,7 +23,7 @@ Route::prefix('')->middleware('auth:sanctum',config('jetstream.auth_session'),'v
 
 //Admin routes
 Route::prefix('admin')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isAdmin')->group(function(){
-    Route::get('/dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
 
 //Manager routes
@@ -40,3 +39,5 @@ Route::get('logout', function ()
 
     return Redirect::to('/');
 })->name('logout');
+
+require_once __DIR__ . '/jetstream.php';

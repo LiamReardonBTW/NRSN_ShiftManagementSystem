@@ -17,17 +17,6 @@ class Authenticate extends Middleware
 
     public function authenticated()
     {
-        if(Auth::user()->role_as == '1') //1-Admin
-        {
-            return redirectTo('admin/dashboard')->with('status','Welcome to Admin Dashboard.');
-        }
-        else if(Auth::user()->role_as == '2')
-        {
-            return redirectTo('manager/dashboard')->with('status','Log in successful.');
-        }
-        else if(Auth::user()->role_as == '3')
-        {
-            return redirectTo('dashboard')->with('status','Log in successful.');
-        }
+
     }
 }

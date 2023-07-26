@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
             $table->integer('role_as');
+            $table->boolean('active_status')->default(1);
         });
     }
 

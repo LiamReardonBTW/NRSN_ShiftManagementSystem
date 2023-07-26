@@ -29,6 +29,22 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <div class="mt-4">
+                <x-label for="role_as" value="{{ __('Role #:') }}" />
+                <x-input id="role_as" class="block mt-1 w-full " type="text" name="role_as" required autocomplete="role_as" placeholder='1 = Worker, 2 = Manager, 3 = Admin'/>
+            </div>
+
+            <div class="mt-4">
+                <label for="role" class="block mt-1 ">{{ __('Role') }}</label>
+                    <div class="col-sm-6">
+                         <select class="form-control w-full" id="role" name="role" required focus>
+                             <option value="Admin">Admin</option>
+                             <option value="Student">Student</option>
+                             <option value="" disabled selected>Select Role</option>
+                         </select>
+                    </div>
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
@@ -46,7 +62,7 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-32">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>

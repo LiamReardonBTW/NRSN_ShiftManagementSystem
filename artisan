@@ -37,6 +37,11 @@ $status = $kernel->handle(
     new Symfony\Component\Console\Output\ConsoleOutput
 );
 
+$error = $kernel->handle(
+    $input = new Symfony\Component\Console\Input\ArgvInput,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
+
 /*
 |--------------------------------------------------------------------------
 | Shutdown The Application
@@ -48,6 +53,7 @@ $status = $kernel->handle(
 |
 */
 
-$kernel->terminate($input, $status);
+$kernel->terminate($input, $status, $error);
 
 exit($status);
+exit($error);

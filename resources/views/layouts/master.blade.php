@@ -26,7 +26,7 @@
                     <h1 class="mt-4 mx-4">@yield('dashboardRole')</h1>
                     @yield('content')
                 </main>
-                @include('layouts.inc.admin-footer')
+                @include('layouts.inc.footer')
             </div>
         </div>
 

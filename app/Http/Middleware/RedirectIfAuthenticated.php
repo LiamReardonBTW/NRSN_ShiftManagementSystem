@@ -29,10 +29,10 @@ class RedirectIfAuthenticated
                     return redirect(RouteServiceProvider::MANAGERHOME);
                 }
                 else if(Auth::user()->role_as == 3){
-                    return redirect(RouteServiceProvider::HOME);
+                    return redirect(RouteServiceProvider::WORKERHOME);
                 }
                 else{
-                return redirect(RouteServiceProvider::LOGIN);
+                return redirect(RouteServiceProvider::HOME);
                 }
             }
         }

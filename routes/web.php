@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 //Landing/Home page route
 Route::redirect('/', 'login');
 
+Route::redirect('/register', 'login');
+
 //Admin routes
 Route::prefix('admin')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isAdmin', 'isActive')->group(function(){
     Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('register',[App\Http\Controllers\Admin\DashboardController::class, 'register']);
 });
 
 //Manager routes

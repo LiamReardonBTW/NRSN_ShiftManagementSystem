@@ -19,7 +19,7 @@ Route::redirect('/', 'login');
 //Admin routes
 Route::prefix('admin')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isAdmin', 'isActive')->group(function(){
     Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
-    Route::get('register',[App\Http\Controllers\Admin\DashboardController::class, 'register']);
+    Route::get('users',[App\Http\Controllers\Admin\DashboardController::class, 'users']);
 });
 
 //Manager routes

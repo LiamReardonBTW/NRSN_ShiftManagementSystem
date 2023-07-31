@@ -132,7 +132,8 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+
+        //Features::registration(), //Disable fortify registration
         Features::resetPasswords(),
         // Features::emailVerification(),
         Features::updateProfileInformation(),

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Worker;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class WorkerDashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,14 +17,13 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        return view('admin.dashboard');
+        return view('dashboard');
     }
-
-    public function users()
-    {
-        return view('admin.users');
-    }
-
 }

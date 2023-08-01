@@ -19,13 +19,16 @@
     <body>
         @include('layouts.inc.admin-navbar')
 
-        <div id="layoutSidenav">
+        <div id="layoutSidenav" class="">
             @include('layouts.inc.admin-sidebar')
             <div id="layoutSidenav_content">
                 <main>
-                    <h1 class="mt-4 mx-4">@yield('dashboardRole')</h1>
-                    @yield('content')
+                    <div class="container-fluid no-padding">
 
+                                <h1 class="mt-4 mx-4">@yield('dashboardRole')</h1>
+                                @yield('content')
+
+                    </div>
                 </main>
                 @include('layouts.inc.footer')
             </div>

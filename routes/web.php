@@ -18,18 +18,18 @@ Route::redirect('/', 'login');
 
 //Admin routes
 Route::prefix('admin')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isAdmin', 'isActive')->group(function(){
-    Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
-    Route::get('users',[App\Http\Controllers\Admin\DashboardController::class, 'users']);
+    Route::get('/dashboard',[App\Http\Controllers\Admin\AdminDashboardController::class, 'index']);
+    Route::get('/users',[App\Http\Controllers\Admin\AdminDashboardController::class, 'users']);
 });
 
 //Manager routes
 Route::prefix('manager')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isManager', 'isActive')->group(function(){
-    Route::get('/dashboard',[App\Http\Controllers\Manager\DashboardController::class, 'index']);
+    Route::get('/dashboard',[App\Http\Controllers\Manager\ManagerDashboardController::class, 'index']);
 });
 
 //Worker routes
 Route::prefix('')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isActive')->group(function(){
-    Route::get('/dashboard',[App\Http\Controllers\Worker\DashboardController::class, 'index']);
+    Route::get('/dashboard',[App\Http\Controllers\Worker\WorkerDashboardController::class, 'index']);
 });
 
 //Logout route

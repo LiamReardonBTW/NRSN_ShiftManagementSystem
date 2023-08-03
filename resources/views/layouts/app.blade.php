@@ -23,8 +23,9 @@
             @include('layouts.inc.worker-sidebar')
             <div id="layoutSidenav_content">
                 <main>
-                    <h1 class="mt-4 mx-4">@yield('dashboardRole')</h1>
+                    
                     @yield('content')
+                    
                 </main>
                 @include('layouts.inc.footer')
             </div>

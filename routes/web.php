@@ -30,6 +30,19 @@ Route::prefix('manager')->middleware('auth:sanctum',config('jetstream.auth_sessi
 //Worker routes
 Route::prefix('')->middleware('auth:sanctum',config('jetstream.auth_session'),'verified','auth', 'isActive')->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\Worker\WorkerDashboardController::class, 'index']);
+    Route::get('/addShift',[App\Http\Controllers\Worker\WorkerDashboardController::class, 'addShift']);
+
+    Route::post('/addShift', function (\Illuminate\Http\Request $request) {
+        $data = $request->only(['clientId', 'shiftDate', 'hours', 'expenses', 'km', 'note']);
+    // Save data to the database
+  
+        // error_log(print_r($data, true));
+        // dd($data);
+        App\Models\shift::create($data);
+
+            return redirect('/addShift')->with('success', 'Data submitted successfully!');
+        })->name('submitForm');
+  
 });
 
 //Logout route
